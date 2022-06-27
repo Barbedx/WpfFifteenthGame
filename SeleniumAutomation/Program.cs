@@ -18,7 +18,7 @@ options.AddArgument("--disable-blink-features=AutomationControlled");
 using ChromeDriver? driver = new(options);
 
 driver.Navigate().GoToUrl("https://celebrate.pringles.com/pl_PL/Home/");
-var waitingDriver = new WebDriverWait(driver, TimeSpan.FromSeconds(100))
+var waitingDriver = new WebDriverWait(driver, TimeSpan.FromSeconds(500))
     .Until(ExpectedConditions.ElementIsVisible(By.ClassName("jqp-piece")));
 
 Console.WriteLine("Game finded!!");
@@ -52,8 +52,8 @@ foreach (var item in solutions)//solver.solution())
     var puzzleItem = driver.FindElement(SelectorByAttributeValue("current", index));
     driver.FindElement(SelectorByAttributeValue("current", index)).Click();
     //new WebDriverWait(driver, TimeSpan.FromSeconds(7));
-    Thread.Sleep(TimeSpan.FromSeconds(0.5));
-    Console.WriteLine($"performed click  to {index} for solution:");
+    Thread.Sleep(TimeSpan.FromSeconds(0.2));
+    Console.WriteLine($"performed click  to {index} for solution:");  
     Console.WriteLine(item);
 }
 Console.WriteLine("solved!");
